@@ -19,6 +19,7 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView
+from items import views as item_views
 # from items import urls
 
 urlpatterns = [
@@ -26,6 +27,7 @@ urlpatterns = [
     url(r'^accounts/login/$', auth_views.login,{'template_name':'login.html'}, name='login'),
     url(r'^accounts/logout/$', auth_views.logout, name='logout'),
     url(r'^items/', include('items.urls')),
+    url(r'^signup/$', item_views.sign_up, name='sign_up'),
     url(r'^$',RedirectView.as_view(url='/items/', permanent=True) ),
 ]
 
